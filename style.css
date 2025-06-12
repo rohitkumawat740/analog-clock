@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: #01011ffa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wraper{
+    position: relative;
+}
+.clock{
+    width: 430px;
+    height: 430px;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clock span{
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: -32px;
+    text-align: center;
+}
+.clock span b{
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+    font-size: 50px;
+    color: #0ef;
+    background: none !important;
+    animation: changeColor 6s linear infinite;
+}
+@keyframes changeColor{
+    0% {color: red;}
+    25% {color: yellow;}
+    50% {color: lime;}
+    75% {color: cyan;}
+    100% {color: red;}
+ }
+.clock::before{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    border: 4px solid #0ef;
+    box-shadow: 0 0 5px #0ef;
+}
+.hand{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.hand i{
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    background-color: var(--clr);
+    border-radius: 50%;
+    box-shadow: var(--my-shadow);
+}
+.hand i,.clock::before{
+    animation: vibrantGlow 6s linear infinite;
+}
+ @keyframes vibrantGlow{
+    0% {background-color: green;}
+    25% {background-color: yellow;}
+    50% {background-color: lime;}
+    75% {background-color: cyan;}
+    100% {background-color: red;}
+ }
+.ticks{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+}
+.ticks span{
+    position: absolute;
+    top: 46.5%;
+    margin-left: 210px;
+    width: 2px;
+    height: 12px;
+    background: #0ef;
+    transform: rotate(calc(var(--i) * 6deg)) translateY(-248px);
+    transform-origin: center bottom;
+    border-radius: 20px;
+    box-shadow: 0 0 4px #0ef;
+    animation: tickColorAnim 6s linear infinite;
+}
+ 
+.ticks span:nth-child(5n){
+    width: 4px;
+    height: 15px;
+    background: #0ef;
+    border-radius: 20px;
+    box-shadow: 0 0 4px #0ef;
+}
+@keyframes tickColorAnim{
+    0% {background: red;}
+    25% {background: yellow;}
+    50% {background: lime;}
+    62% {background: cyan;}
+    75% {background: green;}
+    100% {background: red;}
+} 
+ 
+ 
+ 
